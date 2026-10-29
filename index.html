@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#170d35"><meta name="description" content="Melojay's sakura-inspired personal website"><title>Melojay's World | Personal Website</title>
+
+<link rel="preconnect" href="https\://fonts.googleapis.com"><link rel="preconnect" href="https\://fonts.gstatic.com" crossorigin><link href="https\://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{--pink:#f3a4b8;--hot:#d95f88;--peach:#ffdac2;--brown:#654333;--tan:#c99360;--cream:#fffaf4;--ease:cubic-bezier(.2,.8,.2,1)}*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}body{font-family:Nunito,sans-serif;color:var(--brown);background:linear-gradient(135deg,#fff3ef,#ffe4e9 50%,#fff7ee);min-height:100vh;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.55;background:radial-gradient(ellipse at 12% 18%,#ffd7e8 0,transparent 32%),radial-gradient(ellipse at 88% 28%,#e9ddff 0,transparent 30%),radial-gradient(ellipse at 52% 92%,#fff0d9 0,transparent 38%)}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+
+.site-banner{background:var(--pink);border-bottom:6px solid #00ffff;padding:12px 18px 16px;text-align:center}.banner-inner{display:flex;align-items:center;justify-content:center;gap:16px}.bear{font-size:48px;filter:drop-shadow(0 4px 0 #d96b8e)}.site-banner h1{font-size:clamp(24px,4vw,44px);font-weight:900;color:white;text-shadow:0 4px 0 #d86b8b;line-height:1.2}header{position:sticky;top:0;z-index:100;background:var(--peach);border-bottom:4px solid var(--tan);box-shadow:0 5px 18px #9e5f4720}.navbar{max-width:1200px;min-height:72px;padding:10px 20px;margin:auto;display:flex;align-items:center;justify-content:center;gap:18px}.nav-links{list-style:none;display:flex;align-items:center;justify-content:center;gap:clamp(15px,4vw,58px);flex-wrap:wrap}.nav-links a{display:block;font-size:clamp(14px,1.8vw,22px);font-weight:900;letter-spacing:1px;padding:12px 6px;transition:.25s}.nav-links a:hover,.nav-links a.active{color:var(--hot);transform:translateY(-2px)}.nav-links .logout{background:var(--hot);color:#fff;border-radius:50px;padding:13px 27px;box-shadow:0 5px 0 #b74e73}.menu-toggle{display:none;border:0;border-radius:12px;background:#fff8ef;color:var(--brown);font-size:24px;padding:8px 13px}
+
+main{max-width:1300px;margin:auto;padding:24px 3% 55px}.page{display:none;min-height:60vh;animation:pageIn .5s var(--ease) both}.page.active{display:block}@keyframes pageIn{from{opacity:0;transform:translateY(18px) scale(.99);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}.panel{background:#ffffffed;border:4px solid #00ffff;border-radius:28px;padding:clamp(22px,4vw,48px);box-shadow:0 14px 35px #9e59611c}.section-heading{text-align:center;margin:8px auto 32px;max-width:800px}.eyebrow{color:var(--hot);font-weight:900;letter-spacing:3px;text-transform:uppercase;font-size:12px}.section-heading h2{font-weight:900;color:var(--hot);font-size:clamp(30px,4.5vw,48px);margin-top:7px}.section-heading p{font-size:15px;line-height:1.8;margin-top:9px;color:#795a49}
+
+.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px;padding:30px 3% 42px;min-height:510px}.pill{display:inline-block;background:#fff;border:2px solid var(--pink);border-radius:50px;padding:9px 16px;color:var(--hot);font-size:13px;font-weight:900;letter-spacing:1px}.hero h2{font-size:clamp(43px,6.5vw,78px);font-weight:900;line-height:1.05;color:var(--brown);margin-top:20px}.hero h2 span{color:var(--hot)}.hero-copy p{font-size:16px;line-height:1.95;margin-top:20px;max-width:650px}.buttons{display:flex;flex-wrap:wrap;gap:13px;margin-top:25px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:50px;border:2px solid var(--hot);background:var(--hot);color:white;font-weight:900;transition:.25s;box-shadow:0 5px 0 #b74e73}.btn.secondary{background:#fff;color:var(--hot);box-shadow:0 5px 0 #f1c0cd}.btn:hover{transform:translateY(-4px);box-shadow:0 9px 0 #b74e73}.btn.secondary:hover{background:#fff1f5;box-shadow:0 9px 0 #f1c0cd}.hero-art{position:relative;min-height:390px;display:grid;place-items:center}.portrait-ring{width:min(74%,330px);aspect-ratio:1;border-radius:50%;padding:10px;background:conic-gradient(from 30deg,var(--hot),#ffe6bd,#fff,var(--tan),#f7a3bd,var(--hot));box-shadow:0 0 0 8px #fff9,0 20px 40px #9d596133;animation:float 5s ease-in-out infinite;position:relative}.portrait-ring:before{content:"";position:absolute;inset:-17px;border:4px solid #00ffff;border-radius:50%;animation:spin 30s linear infinite}.portrait-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:6px solid white;background:#ffe8ec}.portrait-fallback{display:none;position:absolute;inset:10px;border-radius:50%;background:linear-gradient(145deg,#ffe4eb,#ffd6b9);align-items:center;justify-content:center;flex-direction:column;font-size:70px;border:6px solid white}.hero-flower{position:absolute;font-size:55px;filter:drop-shadow(0 7px 4px #a6535c2b);animation:float 4s ease-in-out infinite}.flower-one{top:7%;left:7%}.flower-two{right:6%;bottom:10%;animation-delay:-2s}.hero-badge{position:absolute;bottom:7%;left:1%;background:white;border:2px solid var(--pink);border-radius:18px;padding:12px 17px;font-weight:900;box-shadow:0 14px 35px #9e59611c;transform:rotate(-5deg)}@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}@keyframes spin{to{transform:rotate(360deg)}}.quick-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:0 1% 32px}.quick-fact{background:white;border:2px solid #f6c2ce;border-radius:20px;padding:20px;text-align:center;box-shadow:0 14px 35px #9e59611c;transition:transform .3s}.quick-fact:hover{transform:translateY(-6px) rotate(-1deg)}.quick-fact span{font-size:28px}.quick-fact h3{font-size:18px;margin-top:6px;color:var(--hot)}.quick-fact p{font-size:13px;margin-top:4px}.quote{max-width:850px;margin:30px auto 0;text-align:center;padding:25px;border-radius:24px;background:white;border:2px solid #00ffff;color:#8a6554;font-family:'Playfair Display',serif;font-size:clamp(19px,3vw,28px);line-height:1.6}
+
+.about-intro{max-width:850px;text-align:center;margin:0 auto 28px;line-height:1.9;font-size:16px}.about-menu{max-width:880px;margin:auto;background:white;border:3px solid #00ffff;border-radius:30px;padding:14px 26px;box-shadow:0 14px 35px #9e59611c}.about-link{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;padding:20px 8px;border:0;border-bottom:1px solid #f8d9e1;background:transparent;text-align:left;font-size:clamp(18px,2.4vw,25px);font-weight:900;transition:padding .25s,color .25s}.about-link:last-child{border-bottom:0}.about-link:hover{padding-left:18px;color:var(--hot)}.arrow{display:grid;place-items:center;flex:0 0 35px;height:35px;border-radius:50%;background:#ffe5ec;color:var(--hot);transition:transform .25s}.about-link:hover .arrow{transform:translateX(5px)}.back-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}.content-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.info-card{background:white;border:2px solid #f5c0ce;border-radius:22px;padding:24px;box-shadow:0 14px 35px #9e59611c;transition:transform .35s}.info-card:hover{transform:translateY(-5px) rotateX(2deg)}.info-card .icon{font-size:30px}.info-card h3{font-size:21px;color:var(--hot);margin:9px 0}.info-card p,.info-card li{font-size:14px;line-height:1.85}.goal-list{display:grid;gap:14px;max-width:850px;margin:auto}.goal-item{display:flex;gap:15px;align-items:flex-start;padding:19px;background:white;border:2px solid #f4c2cf;border-radius:18px;transition:transform .25s,*background* .25s}.goal-item:hover{transform:translateX(6px);background:#fff5f7}.goal-number{width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;background:var(--hot);color:white;border-radius:50%;font-weight:900}.goal-item h3{font-size:18px;color:var(--hot);margin-bottom:4px}.goal-item p{font-size:14px;line-height:1.8}
+
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.fact-card{min-height:220px;perspective:1000px;cursor:pointer}.fact-inner{position:relative;min-height:220px;height:100%;transform-style:preserve-3d;transition:transform .75s var(--ease)}.fact-card:hover .fact-inner,.fact-card.flipped .fact-inner{transform:rotateY(180deg)}.fact-front,.fact-back{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:23px;border:2px solid #f4bac9;border-radius:23px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 14px 35px #9e59611c}.fact-front{background:linear-gradient(145deg,#fff,#fff0f4)}.fact-front .icon{font-size:43px}.fact-front h3{font-size:20px;color:var(--hot);margin-top:12px}.fact-front small{margin-top:10px;font-size:10px;letter-spacing:1.5px;font-weight:900;color:#9a7564}.fact-back{transform:rotateY(180deg);background:linear-gradient(145deg,#cc9667,#dfaa78);color:white}.fact-back h3{font-size:20px;margin-bottom:10px}.fact-back p{font-size:14px;line-height:1.8}
+
+.gallery-shell{background:white;border:3px solid #00ffff;border-radius:28px;padding:17px;box-shadow:0 14px 35px #9e59611c}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.photo-card{height:300px;perspective:1000px;cursor:pointer;outline:none}.photo-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .75s var(--ease)}.photo-card:hover .photo-inner,.photo-card.flipped .photo-inner{transform:rotateY(180deg)}.photo-front,.photo-back{position:absolute;inset:0;overflow:hidden;border-radius:21px;border:3px solid #f5c2ce;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 9px 20px #6f3e3018}.photo-front{background:#ffe9ee}.photo-front img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}.photo-card:hover .photo-front img{transform:scale(1.06)}.photo-label{position:absolute;left:12px;bottom:12px;background:blueviolet;color:var(--brown);font-size:12px;font-weight:900;padding:8px 12px;border-radius:30px}.photo-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;background:linear-gradient(145deg,#fff0f4,#ffe3c9)}.photo-back h3{font-size:22px;color:var(--hot);margin-bottom:10px}.photo-back p{font-size:14px;line-height:1.8}.gallery-note{text-align:center;font-size:13px;line-height:1.8;margin:18px auto 4px;color:#8a6754}.music-section{margin-top:30px;background:white;border:3px solid #00ffff;border-radius:28px;padding:clamp(20px,3vw,32px);box-shadow:0 14px 35px #9e59611c}.music-heading{text-align:center;margin-bottom:22px}.music-icon{font-size:38px}.music-heading h2{font-size:clamp(25px,4vw,35px);color:var(--hot);margin-top:5px}.music-heading p{font-size:13px;margin-top:6px}.track-list{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.track{padding:17px;border:2px solid #f5c4cf;border-radius:20px;background:linear-gradient(145deg,#fffaf7,#fff0f5);min-width:0;transition:transform .3s}.track:hover{transform:translateY(-4px)}.track-art{height:100px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#ffd1e0,#ffe2bf 55%,#f7b5c8);font-size:42px}.track h3{font-size:17px;color:var(--hot);margin-top:12px}.track p{font-size:12px;margin:3px 0 10px;color:#8a6a59}.track audio{width:100%;height:38px;accent-color:var(--hot)}.music-note{text-align:center;font-size:12px;line-height:1.8;margin-top:16px;color:#8a6754}
+
+.contact-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:start}.contact-form-wrap h2{font-size:clamp(30px,4vw,45px);color:var(--hot);text-align:center;margin-bottom:22px}.contact-form{display:grid;gap:22px}.form-field label{display:block;font-size:18px;font-weight:900;margin-bottom:8px}.form-field input,.form-field textarea{width:100%;border:3px solid #f6a1b7;border-radius:30px;background:#fff8f0;padding:17px 23px;color:var(--brown);font-size:16px;transition:box-shadow .25s,border-color .25s}.form-field input:focus,.form-field textarea:focus{border-color:var(--hot);box-shadow:0 0 0 5px #f7b4c52c;outline:none}.form-field textarea{min-height:160px;resize:vertical;border-radius:27px}.submit-btn{width:100%;border:0;border-radius:50px;background:var(--hot);color:white;padding:20px;font-weight:900;font-size:18px;box-shadow:0 6px 0 #b64e72;transition:transform .25s}.submit-btn:hover{transform:translateY(-3px)}.contact-form-note{font-size:12px;color:#8a6b59;line-height:1.7}.contact-info{background:var(--tan);border:4px solid #00ffff;border-radius:42px;padding:34px;color:white;box-shadow:0 0 0 3px var(--tan),0 14px 35px #9e59611c}.contact-info h2{text-align:center;font-size:clamp(28px,3.5vw,39px);margin-bottom:26px}.contact-detail{padding:19px 0;border-bottom:3px solid #00ffff;font-size:18px;line-height:1.6;overflow-wrap:anywhere}.contact-detail:last-child{border-bottom:0}.contact-detail strong{display:block;font-size:19px}.contact-detail a{text-decoration:underline;text-underline-offset:3px}.contact-detail a:hover{color:#fff4d9}
+
+footer{text-align:center;background:var(--pink);border-top:5px solid #00ffff;padding:28px 15px 32px;color:white}footer .footer-title{font-size:25px;font-weight:900;text-shadow:0 3px 0 #d96b8b}footer p{font-size:12px;margin-top:8px;line-height:1.8}.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:15px 0}.footer-links button{border:0;background:transparent;color:white;font-weight:900}.footer-links button:hover{text-decoration:underline}.back-top{position:fixed;right:18px;bottom:18px;z-index:90;width:46px;height:46px;display:grid;place-items:center;background:var(--hot);color:white;border-radius:50%;font-size:23px;box-shadow:0 5px 0 #b64e72;opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s}.back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}.sakura-petal{position:fixed;top:-30px;left:var(--left);z-index:50;width:var(--size);height:calc(var(--size)*1.25);border-radius:80% 15% 75% 25%;pointer-events:none;background:linear-gradient(145deg,#fff7fa,#f7b4c9 55%,#d96f99);box-shadow:inset 2px 1px 3px #fff9;opacity:0;animation:petalFall var(--duration) var(--delay) linear infinite}@keyframes petalFall{0%{transform:translateY(-5vh) rotate(0);opacity:0}10%{opacity:.65}50%{transform:translate(45px,55vh) rotate(400deg)}90%{opacity:.6}100%{transform:translate(-30px,110vh) rotate(760deg);opacity:0}}.toast{position:fixed;z-index:200;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#684433;color:white;padding:12px 18px;border-radius:30px;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center}.hero-copy p{margin-left:auto;margin-right:auto}.buttons{justify-content:center}.hero-art{min-height:350px}.quick-facts{grid-template-columns:1fr}.contact-layout{grid-template-columns:1fr}.facts-grid,.gallery-grid{grid-template-columns:repeat(2,1fr)}.track-list{grid-template-columns:1fr}.track{display:grid;grid-template-columns:90px 1fr;column-gap:14px;align-items:center}.track-art{grid-row:span 3;height:90px}.track h3{margin-top:0}.track audio{grid-column:2}.track p{margin:3px 0 5px}}
+
+@media(max-width:620px){.site-banner{padding:12px}.banner-inner{gap:9px}.bear{font-size:36px}.navbar{justify-content:space-between;min-height:64px;padding:9px 15px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:calc(100% + 4px);left:3%;right:3%;background:var(--peach);border:2px solid var(--tan);border-radius:0 0 20px 20px;padding:12px;flex-direction:column;gap:3px;box-shadow:0 14px 35px #9e59611c}.nav-links.open{display:flex}.nav-links li{width:100%;text-align:center}.nav-links a{padding:10px}.nav-links .logout{display:inline-block;margin-top:5px}.hero{padding:20px 1% 30px}.hero-art{min-height:300px}.portrait-ring{width:min(68%,260px)}.hero-flower{font-size:42px}.hero-badge{font-size:12px;left:0;bottom:3%}.panel{padding:20px 15px}.about-menu{padding:10px 17px}.about-link{padding:17px 3px;font-size:18px}.content-grid,.facts-grid,.gallery-grid{grid-template-columns:1fr}.photo-card{height:300px}.track{display:block}.track-art{height:110px}.track h3{margin-top:12px}.track audio{margin-top:8px}.contact-info{padding:25px 22px;border-radius:30px}.contact-detail{font-size:16px}.contact-detail strong{font-size:17px}.form-field label{font-size:16px}.form-field input,.form-field textarea{padding:15px 18px}.submit-btn{font-size:16px;padding:17px}}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.sakura-petal{display:none}}
+
+
+
+/* Sakura-only visual refresh: soft blossom glow, no bear or polka-dot pattern. */
+
+:root{--pink:#f8b8d0;--hot:#c95788;--peach:#fff0f5;--brown:#56334a;--tan:#c68db0;--cream:#fffaff}
+
+body{background:linear-gradient(135deg,#fff9fc 0%,#fceaf3 48%,#f2edff 100%);color:#56334a}
+
+.site-banner{background:linear-gradient(110deg,#dca2c5,#b9a9df 55%,#e8b5d0);border-bottom:3px solid #fff7fc;padding:17px 18px 19px}
+
+.banner-inner{gap:14px}.banner-sakura{font-size:clamp(28px,4vw,44px);filter:drop-shadow(0 5px 5px #75426745);animation:blossomBob 5s ease-in-out infinite}
+
+.site-banner h1{color:#fffaff;text-shadow:0 3px 0 #a56b98,0 8px 22px #69416b45;letter-spacing:.3px}
+
+@keyframes blossomBob{50%{transform:translateY(-5px) rotate(9deg)}}
+
+header{background:#fff5faeF;border-bottom:2px solid #e8c4db;box-shadow:0 7px 24px #9b6b9420;backdrop-filter:blur(14px)}
+
+.nav-links a{color:#68445e}.nav-links a:hover,.nav-links a.active{color:#bd4f85}
+
+.nav-links .logout{background:linear-gradient(135deg,#d56a9b,#9e83c8);box-shadow:0 5px 0 #9d638f;color:white}
+
+.menu-toggle{background:#fffaff;color:#68445e;border:1px solid #e8c4db}
+
+main{position:relative}
+
+.panel,.gallery-shell,.about-menu{background:#fffdfef2;border-color:#f0a9ca;box-shadow:0 18px 45px #a76e9920}
+
+.section-heading h2,.hero h2 span,.info-card h3,.goal-item h3,.fact-front h3{color:#c95788}
+
+.eyebrow{color:#a06db7}.pill{border-color:#eab4d1;color:#b94d83;background:#fffaff}
+
+.btn{background:linear-gradient(120deg,#d56a9b,#a18acb);border-color:#d56a9b;box-shadow:0 5px 0 #a45e8b}
+
+.btn.secondary{background:#fffaff;color:#ad4f83;border-color:#e6b7d1;box-shadow:0 5px 0 #ead3e3}
+
+.btn:hover{box-shadow:0 9px 0 #a45e8b}.btn.secondary:hover{background:#fff0f7;box-shadow:0 9px 0 #ead3e3}
+
+.portrait-ring{background:conic-gradient(from 30deg,#d56a9b,#fce8f2,#fffaff,#c5b5ec,#e9a9cb,#d56a9b);box-shadow:0 0 0 8px #fffaffc9,0 22px 48px #a56c9b35}
+
+.portrait-ring:before{border:3px solid #e6a5c7;border-style:solid;box-shadow:0 0 0 7px #fff7fb}
+
+.portrait-ring img{background:#fceaf3;border-color:#fffaff}
+
+.portrait-fallback{background:linear-gradient(145deg,#f9dce9,#e7defb);border-color:#fffaff}
+
+.hero-flower{filter:drop-shadow(0 8px 7px #a6535c38)}
+
+.hero-badge{background:#fffaff;border-color:#eab4d1;color:#68445e;box-shadow:0 14px 35px #9e59611c}
+
+.quick-fact,.info-card,.goal-item{background:#fffdfef2;border-color:#edc0d7;box-shadow:0 12px 32px #9e596114}
+
+.quick-fact h3,.goal-number{color:#fff}.quick-fact h3{color:#bd4f85}
+
+.quote{background:linear-gradient(135deg,#fffaff,#f7efff);border-color:#e6b1d0;color:#79526e}
+
+.about-menu{max-width:880px;padding:14px 26px;border:3px solid #00ffff;border-radius:30px}
+
+.about-link{justify-content:flex-start;padding:20px 8px;border-bottom:0;color:#65465b;font-size:clamp(18px,2.4vw,25px);font-weight:900}
+
+.about-link:hover{padding-left:15px;color:#bd4f85}.about-link .arrow{display:none}
+
+.fact-front,.fact-back{border-color:#eab8d3;box-shadow:0 14px 35px #9e59611c}.fact-front{background:linear-gradient(145deg,#fffaff,#fcecf5)}.fact-back{background:linear-gradient(145deg,#bd8fc4,#9b8bc9);color:#fffaff}
+
+.gallery-shell{border-style:solid;border-color:#e7b4d1}.photo-front,.photo-back{border-color:#e7b4d1}.photo-back{background:linear-gradient(145deg,#bd8fc4,#d17fa8)}
+
+.music-section{background:linear-gradient(135deg,#fffaff,#f7efff);border-color:#e7b4d1}.track{background:#fffdfef2;border-color:#edc0d7}.track-art{background:linear-gradient(135deg,#f9dce9,#e7defb)}
+
+.contact-form-wrap h2{color:#c95788}.form-field input,.form-field textarea{border-color:#eaa9c9;background:#fffaff;color:#56334a}.submit-btn{background:linear-gradient(120deg,#d56a9b,#a18acb);box-shadow:0 5px 0 #a45e8b}
+
+.contact-info{background:linear-gradient(145deg,#b887c0,#a77fb4 55%,#8f83bf);border-color:#fff1fa;color:white}.contact-info h2{color:white}.contact-detail{border-color:#ffffff8c}
+
+footer{background:linear-gradient(110deg,#b987bd,#a58bc8 55%,#d49abc);border-top:3px solid #fff7fc;color:#fffaff}footer .footer-title{text-shadow:0 3px 0 #865b91}footer p, .footer-links button{color:#fffaff}
+
+.back-top{background:linear-gradient(135deg,#d56a9b,#a18acb);box-shadow:0 5px 0 #a45e8b}
+
+.sakura-petal{position:fixed;top:-35px;left:var(--left);z-index:50;width:var(--size);height:calc(var(--size)*1.35);display:block;pointer-events:none;border-radius:80% 18% 75% 25%;background:linear-gradient(145deg,#fff8fc 0%,#ffd5e8 24%,#ff9bc9 58%,#d85d9e 100%);box-shadow:inset 2px 1px 3px #ffffffd9,inset -2px -3px 4px #8e2f6930,0 2px 7px #ff8fc933;transform-origin:50% 15%;opacity:0;animation:petalFall var(--duration) var(--delay) linear infinite;will-change:transform,opacity}
+
+.sakura-petal:nth-child(3n){border-radius:75% 25% 80% 20%;background:linear-gradient(145deg,#fff7fb,#f8bfdc 38%,#e87bb5 75%,#bd4c94)}
+
+.sakura-petal:nth-child(4n){background:linear-gradient(145deg,#fff9fc,#ffc9df 45%,#f18abf)}
+
+@keyframes petalFall{0%{transform:translate3d(0,-5vh,0) rotateX(0) rotateZ(0) scale(.75);opacity:0}8%{opacity:.82}28%{transform:translate3d(calc(var(--sway)*.45),28vh,0) rotateX(130deg) rotateZ(150deg) scale(1)}52%{transform:translate3d(var(--sway),56vh,0) rotateX(250deg) rotateZ(320deg) scale(.82)}78%{transform:translate3d(calc(var(--sway)*-.55),84vh,0) rotateX(390deg) rotateZ(500deg) scale(1.05)}100%{transform:translate3d(calc(var(--sway)*.25),112vh,0) rotateX(520deg) rotateZ(700deg) scale(.72);opacity:0}}10%{opacity:.9}25%{transform:translate3d(calc(var(--sway)*.35),25vh,0) rotateX(110deg) rotateY(80deg) rotateZ(100deg) scale(1)}50%{transform:translate3d(var(--sway),53vh,0) rotateX(220deg) rotateY(180deg) rotateZ(220deg) scale(.82)}75%{transform:translate3d(calc(var(--sway)*-.4),80vh,0) rotateX(310deg) rotateY(260deg) rotateZ(320deg) scale(1.05)}100%{transform:translate3d(calc(var(--sway)*.2),112vh,0) rotateX(420deg) rotateY(360deg) rotateZ(470deg) scale(.7);opacity:0}}
+
+.toast{background:#765079;color:white}
+
+@media(max-width:620px){.nav-links{background:#fff5fa;border-color:#e8c4db}.site-banner{padding:14px 10px}.banner-inner{gap:8px}.banner-sakura{font-size:30px}.site-banner h1{font-size:clamp(20px,5.5vw,30px)}.about-menu{padding:10px 17px}.about-link{padding:17px 3px;font-size:18px}}
+
+
+
+
+
+
+
+/* ABOUT hover dropdown: one plain cyan-bordered panel with three text options. */
+
+.nav-links>li{position:relative}
+
+.nav-links .has-dropdown>a{position:relative;z-index:2}
+
+.about-dropdown{position:absolute;top:calc(100% + 8px);left:50%;width:344px;max-width:min(344px,86vw);padding:12px 25px;background:#fff;border:3px solid #00ffff;border-radius:29px;box-shadow:0 14px 35px #9e59611c;display:flex;flex-direction:column;gap:0;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,10px) scale(.98);transform-origin:top center;transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:500}
+
+.has-dropdown:hover .about-dropdown,.has-dropdown:focus-within .about-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) scale(1)}
+
+.nav-links .about-dropdown a{display:block;padding:14px 8px;border:0;border-radius:0;background:transparent;color:#654333;font-size:clamp(15px,1.7vw,20px);font-weight:900;letter-spacing:.2px;white-space:normal;text-align:left;transform:none;transition:color .2s,padding-left .2s}
+
+.nav-links .about-dropdown a:hover,.nav-links .about-dropdown a:focus-visible{color:#bd4f85;padding-left:15px;background:transparent;transform:none}
+
+.nav-links .about-dropdown a+a{border-top:0}
+
+@media(max-width:620px){.nav-links .has-dropdown{width:100%}.nav-links .about-dropdown{position:static;left:auto;top:auto;width:100%;max-width:none;margin:0 auto 8px;padding:8px 16px;box-shadow:none;transform:none;border-radius:20px;display:none;opacity:1;visibility:visible;pointer-events:auto}.nav-links .has-dropdown:hover .about-dropdown,.nav-links .has-dropdown:focus-within .about-dropdown{display:flex;transform:none}.nav-links .about-dropdown a{text-align:center;font-size:15px;padding:11px 5px}.about-landing .back-row .btn{width:100%}}
+
+
+
+/* DARK SAKURA THEME — visual styling only; existing page layout and interactions remain unchanged. */
+
+:root{--pink:#ff9bd2;--hot:#ff78bc;--peach:#21123f;--brown:#fbf5ff;--tan:#7b5ba7;--cream:#fff9ff;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:dark}
+
+html{background:#170d35}
+
+body{color:#fbf5ff;background:radial-gradient(ellipse at 8% 12%,#71356d 0,transparent 35%),radial-gradient(ellipse at 90% 46%,#164878 0,transparent 38%),linear-gradient(135deg,#170d35 0%,#21113f 50%,#101d40 100%)}
+
+body:before{opacity:.2;background-image:radial-gradient(1px 1px at 15% 20%,#fff 100%,transparent),radial-gradient(2px 2px at 70% 40%,#fff 100%,transparent),radial-gradient(1px 1px at 42% 75%,#fff 100%,transparent);background-size:180px 180px,230px 230px,200px 200px}
+
+.site-banner{background:linear-gradient(110deg,#3a1c50eF,#21113feF 55%,#18395aeF);border-bottom:1px solid #ff9bd266;box-shadow:0 12px 38px #0002}
+
+.site-banner h1{color:#fffaff;text-shadow:0 3px 0 #7d3c79,0 8px 24px #ff78bc35}
+
+.banner-sakura{filter:drop-shadow(0 0 12px #ff9bd288)}
+
+header{background:#170d35d9;border-bottom:1px solid #ff9bd24d;box-shadow:0 8px 28px #0003;backdrop-filter:blur(18px)}
+
+.nav-links a{color:#f7eaff}.nav-links a:hover,.nav-links a.active{color:#83f0f4}
+
+.nav-links .logout{background:linear-gradient(120deg,#ff91c8,#a78bfa 60%,#83f0f4);color:#201238;box-shadow:0 5px 0 #633d80}
+
+.menu-toggle{background:#ffffff0d;color:#fff;border:1px solid #ffffff24}
+
+main{position:relative}
+
+.page{color:#fbf5ff}
+
+.panel,.gallery-shell,.about-landing{background:linear-gradient(145deg,#ffffff12,#ffffff06);border-color:#ff9bd27a;box-shadow:0 22px 60px #0003;backdrop-filter:blur(14px)}
+
+.section-heading h2,.hero h2 span,.info-card h3,.goal-item h3,.fact-front h3,.contact-form-wrap h2{color:#ff9bd2}
+
+.section-heading p,.about-intro,.hero-copy p,.info-card p,.info-card li,.goal-item p,.fact-back p,.gallery-note,.music-note{color:#d6c9e8}
+
+.eyebrow{color:#83f0f4}.pill{border-color:#83f0f46e;color:#83f0f4;background:#83f0f410}
+
+.btn{background:linear-gradient(115deg,#ffb8df,#c3b8ff 60%,#83f0f4);border-color:#ffb8df;color:#241337;box-shadow:0 5px 0 #70458b}
+
+.btn.secondary{background:#ffffff0b;color:#f9eaff;border-color:#ffffff2c;box-shadow:0 5px 0 #10091e}
+
+.btn:hover{box-shadow:0 9px 0 #70458b}.btn.secondary:hover{background:#ffffff16;box-shadow:0 9px 0 #10091e}
+
+.portrait-ring{background:conic-gradient(from 30deg,#ff8ac8,#ffc9e7,#83f0f4,#a78bfa,#ff8ac8);box-shadow:0 0 0 8px #ffffff0b,0 0 38px #ff91c84a,0 22px 50px #0006}
+
+.portrait-ring:before{border:2px solid #ffb8df70;box-shadow:0 0 0 7px #ffffff06}
+
+.portrait-ring img{background:#21123f;border-color:#201239}.portrait-fallback{background:linear-gradient(145deg,#3a2054,#173a5d);border-color:#21123f;color:#fff}
+
+.hero-flower{filter:drop-shadow(0 8px 10px #ff78bc42)}
+
+.hero-badge{background:#1d1239e8;border-color:#ffffff25;color:#fff;box-shadow:0 14px 35px #0005;backdrop-filter:blur(15px)}
+
+.quick-fact,.info-card,.goal-item{background:linear-gradient(145deg,#ffffff11,#ffffff06);border-color:#ffffff24;box-shadow:0 12px 32px #0002;color:#fbf5ff}
+
+.quick-fact h3{color:#83f0f4}.quick-fact p{color:#c9bddf}.goal-number{background:linear-gradient(145deg,#ff91c8,#a78bfa);color:#21123f}
+
+.quote{background:linear-gradient(135deg,#ff91c814,#83f0f40a);border-color:#ff91c85c;color:#f5e9ff;box-shadow:0 15px 40px #0002}
+
+/* Keep the requested About dropdown as a compact menu with a plain cyan border. */
+
+.about-menu,.about-dropdown{background:#fff;border-color:#ff9fc5;box-shadow:0 16px 40px #0004}
+
+.about-link,.nav-links .about-dropdown a{color:#56334a}.about-link:hover,.nav-links .about-dropdown a:hover,.nav-links .about-dropdown a:focus-visible{color:#c95788}
+
+.about-link .arrow{background:#ffe5f0;color:#c95788}
+
+.fact-front,.fact-back{border-color:#ffffff28;box-shadow:0 14px 35px #0003}.fact-front{background:linear-gradient(145deg,#2b1948,#1a1235);color:#fff}.fact-front small{color:#bfb0d8}.fact-back{background:linear-gradient(145deg,#ff91c8,#a78bfa 58%,#83dfe8);color:#201238}
+
+.gallery-shell{border-style:solid;border-color:#ff9bd255}.photo-front,.photo-back{border-color:#ffffff2e}.photo-front{background:#24163e}.photo-back{background:linear-gradient(145deg,#3b2057,#173c60);color:#fff}
+
+.music-section{background:linear-gradient(135deg,#ffffff10,#ffffff05);border-color:#ff9bd255;color:#fff}.track{background:#ffffff0a;border-color:#ffffff24;color:#fff}.track p{color:#cbbfe0}.track-art{background:linear-gradient(135deg,#ff91c8,#a78bfa 60%,#83f0f4)}
+
+.contact-form-wrap h2{color:#ff9bd2}.form-field label{color:#f9eaff}.form-field input,.form-field textarea{border-color:#ff9bd277;background:#170d35aa;color:#fff;box-shadow:inset 0 2px 8px #0002}.form-field input::placeholder,.form-field textarea::placeholder{color:#b7a8cc}.submit-btn{background:linear-gradient(115deg,#ffb8df,#c3b8ff 60%,#83f0f4);color:#241337;box-shadow:0 5px 0 #70458b}
+
+.contact-info{background:linear-gradient(145deg,#34204e,#1a3153 70%,#243c68);border-color:#ffb8df;color:#fff;box-shadow:0 20px 45px #0003}.contact-info h2{color:#fff}.contact-detail{border-color:#ffffff35;color:#f9efff}.contact-detail a{color:#83f0f4}
+
+footer{background:#100a25d9;border-top:1px solid #ff9bd255;color:#f9efff}footer .footer-title{color:#ffb8df;text-shadow:0 0 20px #ff78bc45}footer p,.footer-links button{color:#cfc3e3}.footer-links button:hover{color:#83f0f4}
+
+.back-top{background:linear-gradient(135deg,#ff91c8,#a78bfa);color:#201238;box-shadow:0 5px 0 #70458b}
+
+.sakura-petal{filter:drop-shadow(0 5px 7px #ff78bc48)}
+
+.toast{background:#24153f;color:#ffdaee;border-color:#ffffff2b}
+
+@media(max-width:620px){.nav-links{background:#1b1035f7;border-color:#ff9bd255}.nav-links a{color:#f7eaff}.nav-links .has-dropdown .about-dropdown{background:#fff}.about-menu{background:#fff}.about-link{color:#56334a}.site-banner{background:linear-gradient(110deg,#3a1c50,#21113f 55%,#18395a)}}
+
+
+
+</style></head>
+
+<body><div id="petalLayer" aria-hidden="true"></div>
+
+<div class="site-banner"><div class="banner-inner"><span class="banner-sakura" aria-hidden="true">🌸</span><h1>Welcome to My Personal Website</h1></div></div>
+
+<header><nav class="navbar" aria-label="Main navigation"><button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button><ul class="nav-links" id="navLinks"><li><a href="#home" data-page="home" class="active">HOME</a></li><li class="has-dropdown"><a href="#about" data-page="about" aria-haspopup="true" aria-expanded="false">ABOUT</a><div class="about-dropdown" aria-label="About menu"><a href="#skills" data-page="skills">Skills I'm Developing</a><a href="#goals" data-page="goals">My Goals as a Student</a><a href="#facts" data-page="facts">Fun Facts About Me</a></div></li><li><a href="#gallery" data-page="gallery">GALLERY</a></li><li><a href="#contact" data-page="contact">CONTACT</a></li><li><a href="login.html" class="logout" id="logoutBtn">LOG OUT</a></li></ul></nav></header>
+
+<main>
+
+<section class="page active" id="home" aria-labelledby="homeTitle"><div class="hero"><div class="hero-copy"><span class="pill">🌸 BSIT 2A · MY PERSONAL SPACE</span><h2 id="homeTitle">Hello, I'm <span>Melojay!</span> ♡</h2><p>Welcome to my little corner of the internet! I'm an Information Technology student who enjoys learning, creativity, music, and discovering new things. This website shares a little about who I am, the goals I'm working toward, the moments I want to remember, and how you can get in touch with me.</p><div class="buttons"><a class="btn" href="#about" data-page="about">Get to Know Me ♡</a><a class="btn secondary" href="#gallery" data-page="gallery">View My Gallery ✿</a></div></div><div class="hero-art" aria-label="Profile picture decoration"><div class="hero-flower flower-one">🌸</div><div class="hero-flower flower-two">🌷</div><div class="portrait-ring"><img src="melojay.jpg" alt="Melojay's profile picture" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="portrait-fallback">🌸<strong style="font-size:24px;margin-top:8px">Melojay</strong><small style="font-size:11px;margin-top:5px">Replace melojay.jpg with your photo</small></div></div><div class="hero-badge">✨ Learning, growing & blooming</div></div></div><div class="quick-facts"><article class="quick-fact"><span>🎓</span><h3>BSIT 2A</h3><p>My academic journey</p></article><article class="quick-fact"><span>💻</span><h3>Information Technology</h3><p>Learning one step at a time</p></article><article class="quick-fact"><span>🌷</span><h3>Dreams in Bloom</h3><p>Creating my own future</p></article></div><div class="quote">“Like sakura flowers, we all bloom in our own time. Keep learning, keep dreaming, and trust your journey.”</div></section>
+
+<section class="page" id="about" aria-labelledby="aboutTitle"><div class="panel about-landing"><div class="section-heading"><span class="eyebrow">A little introduction</span><h2 id="aboutTitle">About Me 🌸</h2><p>Hi! I'm Melojay A. Lomugdang, a BSIT student at the University of Antique, Tario-Lim Memorial Campus. Hover over <strong>ABOUT</strong> in the navigation menu to choose a topic, or use the buttons below.</p></div><div class="back-row"><button class="btn" data-page="skills">Skills I'm Developing</button><button class="btn secondary" data-page="goals">My Goals as a Student</button><button class="btn secondary" data-page="facts">Fun Facts About Me</button></div></div></section>
+
+<section class="page" id="skills"><div class="section-heading"><span class="eyebrow">Practice makes progress</span><h2>Skills I'm Developing ✨</h2><p>These are skills I'm working on as I grow in Information Technology. Every practice project helps me improve.</p></div><div class="content-grid"><article class="info-card"><span class="icon">🌐</span><h3>Web Development</h3><p>Learning how HTML structures a page, CSS makes it attractive and responsive, and JavaScript adds useful interactions.</p></article><article class="info-card"><span class="icon">⌨️</span><h3>Programming & Problem Solving</h3><p>Practicing how to break problems into smaller steps, understand code, find errors, and develop logical solutions.</p></article><article class="info-card"><span class="icon">🎨</span><h3>Creative Design</h3><p>Exploring colors, typography, spacing, layouts, and animations that make digital projects engaging and easy to use.</p></article><article class="info-card"><span class="icon">🤝</span><h3>Communication & Teamwork</h3><p>Improving how I share ideas, listen to feedback, collaborate with classmates, and explain my work clearly.</p></article><article class="info-card"><span class="icon">🔐</span><h3>Digital Responsibility</h3><p>Learning to protect personal information, respect others online, check information carefully, and use technology responsibly.</p></article><article class="info-card"><span class="icon">📚</span><h3>Independent Learning</h3><p>Researching unfamiliar topics, practicing consistently, and learning from mistakes instead of giving up.</p></article></div><div class="back-row"><button class="btn secondary" data-page="about">← Back to About</button><button class="btn" data-page="goals">Next: My Goals →</button></div></section>
+
+<section class="page" id="goals"><div class="section-heading"><span class="eyebrow">Small steps, big dreams</span><h2>My Goals as a Student 🎓</h2><p>Reaching my dreams takes time, patience, and effort. These are goals I want to keep working toward.</p></div><div class="goal-list"><article class="goal-item"><span class="goal-number">1</span><div><h3>Do My Best in My Studies</h3><p>Understand my lessons, complete school requirements on time, and build good study habits.</p></div></article><article class="goal-item"><span class="goal-number">2</span><div><h3>Become More Confident in Coding</h3><p>Practice programming regularly, create more projects, and learn to solve problems independently.</p></div></article><article class="goal-item"><span class="goal-number">3</span><div><h3>Build a Strong Portfolio</h3><p>Save my best school and personal projects to show my progress, creativity, and skills.</p></div></article><article class="goal-item"><span class="goal-number">4</span><div><h3>Graduate and Prepare for a Career</h3><p>Finish my degree, gain practical experience, and use technology to help people.</p></div></article><article class="goal-item"><span class="goal-number">5</span><div><h3>Keep Growing as a Person</h3><p>Be responsible, stay curious, accept feedback, and remember progress does not need to be perfect.</p></div></article></div><div class="back-row"><button class="btn secondary" data-page="about">← Back to About</button><button class="btn" data-page="facts">Next: Fun Facts →</button></div></section>
+
+<section class="page" id="facts"><div class="section-heading"><span class="eyebrow">Little things that make me, me</span><h2>Fun Facts About Me 🌷</h2><p>Hover over or click each card to flip it. On phones, tap a card to turn it over.</p></div><div class="facts-grid"><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">💻</span><h3>Tech Explorer</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>My IT Journey</h3><p>I'm exploring coding and web design, and enjoy seeing an idea turn into something interactive.</p></div></div></article><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">🌸</span><h3>Sakura Lover</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>Soft & Dreamy</h3><p>I love sakura-inspired details, soft pink colors, and cute designs that make a website feel personal.</p></div></div></article><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">🎧</span><h3>Music & Chill</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>My Relaxing Time</h3><p>Music makes quiet moments feel special and is a nice companion while relaxing or studying.</p></div></div></article><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">☕</span><h3>Cozy Moments</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>A Little Break</h3><p>I appreciate small comforts and breaks that help me recharge during a busy school day.</p></div></div></article><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">🎨</span><h3>Creative Mind</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>Details Matter</h3><p>I enjoy trying different colors, layouts, and animations until a design feels right.</p></div></div></article><article class="fact-card" tabindex="0" role="button" aria-pressed="false"><div class="fact-inner"><div class="fact-front"><span class="icon">🌱</span><h3>Always Growing</h3><small>HOVER OR TAP TO FLIP</small></div><div class="fact-back"><h3>One Step at a Time</h3><p>I believe mistakes are part of learning, and small improvements lead to progress.</p></div></div></article></div><div class="back-row"><button class="btn secondary" data-page="about">← Back to About</button><button class="btn" data-page="gallery">Explore My Gallery →</button></div></section>
+
+<section class="page" id="gallery"><div class="section-heading"><span class="eyebrow">Memories & moments</span><h2>My Personal Gallery 📸</h2><p>Six spaces for photos from my life, favorite memories, and creative moments. Hover or tap a photo to flip the card.</p></div><div class="gallery-shell"><div class="gallery-grid">
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="GANDA.jpg" alt="Gallery photo 1" loading="lazy"><span class="photo-label">01 · My Favorite Moment</span></div><div class="photo-back"><div><h3>Little Moments</h3><p>A favorite memory worth keeping.</p></div></div></div></article>
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="denim.jpg" alt="Gallery photo 2" loading="lazy"><span class="photo-label">02 · My Style</span></div><div class="photo-back"><div><h3>My Personal Style</h3><p>A snapshot that expresses my personality.</p></div></div></div></article>
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="dream.jpg" alt="Gallery photo 3" loading="lazy"><span class="photo-label">03 · Dreams</span></div><div class="photo-back"><div><h3>Dreams in Bloom</h3><p>Remembering the dreams that inspire me.</p></div></div></div></article>
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="gandaa.jpg" alt="Gallery photo 4" loading="lazy"><span class="photo-label">04 · Everyday Life</span></div><div class="photo-back"><div><h3>Everyday Life</h3><p>Ordinary days can become beautiful memories.</p></div></div></div></article>
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="gandaaa.jpg" alt="Gallery photo 5" loading="lazy"><span class="photo-label">05 · Friends & Memories</span></div><div class="photo-back"><div><h3>Shared Memories</h3><p>Moments that make life meaningful.</p></div></div></div></article>
+
+<article class="photo-card" tabindex="0" role="button" aria-pressed="false"><div class="photo-inner"><div class="photo-front"><img src="gandaaaa.jpg" alt="Gallery photo 6" loading="lazy"><span class="photo-label">06 · My Journey</span></div><div class="photo-back"><div><h3>Still Becoming</h3><p>Every chapter is part of my journey.</p></div></div></div></article>
+
+</div><p class="gallery-note">✿ Keep the filenames above or update the image paths in the HTML. ✿</p></div>
+
+<div class="music-section" id="music"><div class="music-heading"><div class="music-icon">🎵</div><h2>Music for My Little World</h2><p>Three tracks to match the mood. Press play to listen.</p></div><div class="track-list"><article class="track"><div class="track-art">🌸</div><div><h3>Sakura Dreams</h3><p>Soft · Dreamy · motivation</p></div><audio controls preload="none"><source src="leaves.mp3" type="audio/mpeg">Your browser does not support audio.</audio></article><article class="track"><div class="track-art">🌙</div><div><h3>Midnight Thoughts</h3><p>Calm · Nighttime · thoughts</p></div><audio controls preload="none"><source src="You'llBeinMyHeart.mp3" type="audio/mpeg">Your browser does not support audio.</audio></article><article class="track"><div class="track-art">🩷</div><div><h3>Yellow Skies</h3><p>Sweet · Light · Happy</p></div><audio controls preload="none"><source src="kahelnalangit.mp3" type="audio/mpeg">Your browser does not support audio.</audio></article></div><p class="music-note">Add your MP3 files named <b>sakura.mp3</b>, <b>midnight.mp3</b>, and <b>pink-skies.mp3</b> beside this HTML file, or update the audio source paths. Use music you own or are allowed to share.</p></div><div class="back-row"><button class="btn secondary" data-page="home">← Back Home</button><button class="btn" data-page="contact">Contact Me →</button></div></section>
+
+<section class="page" id="contact"><div class="panel"><div class="contact-layout"><div class="contact-form-wrap"><h2>Let's Get in Touch</h2><form class="contact-form" id="contactForm"><div class="form-field"><label for="visitorName">Your Name:</label><input id="visitorName" name="name" type="text" placeholder="Your Name" required></div><div class="form-field"><label for="visitorEmail">Email:</label><input id="visitorEmail" name="email" type="email" placeholder="Your Email" required></div><div class="form-field"><label for="visitorMessage">Message:</label><textarea id="visitorMessage" name="message" placeholder="Your Message" required></textarea></div><button class="submit-btn" type="submit">SEND MESSAGE</button><p class="contact-form-note"></p></form></div><aside class="contact-info"><h2>Contact Me</h2><div class="contact-detail"><strong>Email Address:</strong><a href="mailto:YOUR_EMAIL@example.com">melojaylomugdang@gmail.com</a></div><div class="contact-detail"><strong>Phone Number:</strong><a href="tel:+639979660073">+639979660073</a></div><div class="contact-detail"><strong>Address:</strong>Culasi, Antique, Philippines</div><div class="contact-detail"><strong>School:</strong>University of Antique · Tario-Lim Memorial Campus</div></aside></div></div><div class="quote">Thank you for visiting my little world. Feel free to reach out, say hello, and keep blooming! 🌸</div></section>
+
+</main><footer><div class="footer-title">Melojay's World 🌸</div><p>A little corner of the internet filled with my story, goals, and IT journey.</p><div class="footer-links"><button data-page="home">Home</button><button data-page="about">About</button><button data-page="gallery">Gallery</button><button data-page="contact">Contact</button></div><p>Made with ♡ and a little sakura magic.<br>© <span id="year"></span> Melojay A. Lomugdang</p></footer><button class="back-top" id="backTop" aria-label="Back to top">↑</button><div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+
+const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;$('#year').textContent=new Date().getFullYear();
+
+if(!reduced){const layer=$('#petalLayer'),count=innerWidth<600?32:68;for(let i=0;i<count;i++){const p=document.createElement('span');p.className='sakura-petal';p.setAttribute('aria-hidden','true');p.style.setProperty('--left',Math.random()*100+'%');p.style.setProperty('--size',(7+Math.random()*10)+'px');p.style.setProperty('--duration',(8+Math.random()*13)+'s');p.style.setProperty('--delay',(-Math.random()*22)+'s');p.style.setProperty('--sway',(Math.random()*180-90)+'px');layer.appendChild(p)}}
+
+const pages=$$('.page'),menu=$('#menuToggle'),nav=$('#navLinks');function showPage(id,updateHash=true){if(!pages.some(p=>p.id===id))id='home';pages.forEach(p=>{p.classList.toggle('active',p.id===id);p.setAttribute('aria-hidden',String(p.id!==id))});$$('.nav-links [data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===id));nav.classList.remove('open');menu.textContent='☰';menu.setAttribute('aria-expanded','false');if(updateHash&&location.hash!=='#'+id)history.pushState({page:id},'','#'+id);window.scrollTo({top:0,behavior:reduced?'auto':'smooth'})}
+
+$$('[data-page]').forEach(el=>el.addEventListener('click',e=>{const id=el.dataset.page;if(!id)return;if(el.tagName==='A')e.preventDefault();showPage(id);const aboutTrigger=document.querySelector('.has-dropdown>a');if(aboutTrigger)aboutTrigger.setAttribute('aria-expanded','false')}));
+
+const aboutItem=document.querySelector('.has-dropdown'),aboutTrigger=aboutItem?.querySelector(':scope > a');if(aboutItem&&aboutTrigger){aboutItem.addEventListener('mouseenter',()=>aboutTrigger.setAttribute('aria-expanded','true'));aboutItem.addEventListener('mouseleave',()=>aboutTrigger.setAttribute('aria-expanded','false'));aboutItem.addEventListener('focusin',()=>aboutTrigger.setAttribute('aria-expanded','true'));aboutItem.addEventListener('focusout',e=>{if(!aboutItem.contains(e.relatedTarget))aboutTrigger.setAttribute('aria-expanded','false')})}addEventListener('popstate',()=>showPage(location.hash.slice(1)||'home',false));if(location.hash)showPage(location.hash.slice(1),false);menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.textContent=open?'×':'☰';menu.setAttribute('aria-expanded',String(open))});
+
+$$('.fact-card,.photo-card').forEach(card=>{function flip(){const on=card.classList.toggle('flipped');card.setAttribute('aria-pressed',String(on))}card.addEventListener('click',flip);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}})});const players=$$('audio');players.forEach(p=>p.addEventListener('play',()=>players.forEach(other=>{if(other!==p)other.pause()})));
+
+function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500)}$('#contactForm').addEventListener('submit',e=>{e.preventDefault();const recipient='YOUR_EMAIL@example.com';if(recipient==='YOUR_EMAIL@example.com'){showToast('Replace YOUR_EMAIL@example.com in the code with your real email first.');return}const name=$('#visitorName').value.trim(),email=$('#visitorEmail').value.trim(),message=$('#visitorMessage').value.trim();location.href='mailto:'+recipient+'?subject='+encodeURIComponent('Website message from '+name)+'&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+message)});
+
+const back=$('#backTop');addEventListener('scroll',()=>back.classList.toggle('visible',scrollY>350),{passive:true});back.addEventListener('click',()=>showPage('home'));$('#logoutBtn').addEventListener('click',e=>{e.preventDefault();if(confirm('Are you sure you want to log out?')){try{localStorage.removeItem('isLoggedIn')}catch(err){}location.href='login.html'}});
+
+</script></body></html>

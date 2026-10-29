@@ -1,0 +1,1945 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170d35">
+<meta name="description" content="Welcome to Melojay's personal website — a sakura-inspired world of IT, creativity, dreams, and self-discovery.">
+
+<title>Melojay's World | Sakura Personal Website</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --pink: #ff91c8;
+    --pink-light: #ffd5e9;
+    --cyan: #83f0f4;
+    --purple: #b9a3ff;
+    --navy: #170d35;
+    --white: #fff9ff;
+    --muted: #ded6ef;
+    --glass: rgba(255,255,255,.085);
+    --border: rgba(255,255,255,.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at 15% 15%, #51245f 0%, transparent 35%),
+        radial-gradient(ellipse at 85% 45%, #153c69 0%, transparent 35%),
+        linear-gradient(140deg, #170d35, #21113f 48%, #101d40);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: .25;
+    background-image:
+        radial-gradient(1px 1px at 15% 20%, white 100%, transparent),
+        radial-gradient(2px 2px at 70% 40%, white 100%, transparent),
+        radial-gradient(1px 1px at 42% 75%, white 100%, transparent),
+        radial-gradient(2px 2px at 90% 85%, white 100%, transparent);
+    background-size: 180px 180px, 230px 230px, 200px 200px, 260px 260px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 5px;
+}
+
+::selection {
+    color: var(--navy);
+    background: var(--pink);
+}
+
+/* Floating ambient lights */
+
+.ambient {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .2;
+    z-index: -1;
+    pointer-events: none;
+    animation: ambientFloat 12s ease-in-out infinite alternate;
+}
+
+.ambient.one {
+    background: #ff69b4;
+    top: 20%;
+    left: -120px;
+}
+
+.ambient.two {
+    background: #48dff4;
+    right: -130px;
+    bottom: 10%;
+    animation-delay: -5s;
+}
+
+@keyframes ambientFloat {
+    to { transform: translate(40px, -60px) scale(1.2); }
+}
+
+/* Falling 3D sakura petals */
+
+#petalLayer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.falling-petal {
+    position: absolute;
+    top: -35px;
+    left: var(--left);
+    width: var(--size);
+    height: calc(var(--size) * 1.35);
+    border-radius: 80% 15% 75% 25%;
+    background: linear-gradient(
+        145deg,
+        #fff4fa 0%,
+        #ffb9db 32%,
+        #ee76b8 68%,
+        #a43d91 100%
+    );
+    box-shadow:
+        inset 2px 1px 3px rgba(255,255,255,.85),
+        inset -2px -3px 4px rgba(119,28,100,.2),
+        0 2px 8px rgba(255,130,200,.15);
+    opacity: 0;
+    animation: petalFall var(--duration) var(--delay) linear infinite;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translate3d(0,-5vh,0) rotateX(0deg) rotateZ(0deg);
+        opacity: 0;
+    }
+    8% { opacity: var(--opacity); }
+    45% {
+        transform: translate3d(55px,48vh,0) rotateX(420deg) rotateZ(150deg);
+    }
+    80% { opacity: var(--opacity); }
+    100% {
+        transform: translate3d(-45px,110vh,0) rotateX(850deg) rotateZ(360deg);
+        opacity: 0;
+    }
+}
+
+/* CSS sakura flowers with dimensional petals */
+
+.sakura-3d {
+    position: absolute;
+    width: var(--flower-size, 100px);
+    height: var(--flower-size, 100px);
+    left: var(--flower-left, 10%);
+    top: var(--flower-top, 15%);
+    opacity: var(--flower-opacity, .8);
+    pointer-events: none;
+    transform-style: preserve-3d;
+    animation: flowerFloat var(--flower-speed, 8s) ease-in-out infinite;
+    filter: drop-shadow(0 8px 12px rgba(255,120,195,.16));
+}
+
+.sakura-3d .petal {
+    position: absolute;
+    width: 39%;
+    height: 46%;
+    left: 30.5%;
+    top: 4%;
+    transform-origin: 50% 100%;
+    border-radius: 70% 70% 40% 40%;
+    background: linear-gradient(145deg, #fff7fc, #ffc3e0 42%, #ee85c4 78%, #bb5fae);
+    box-shadow:
+        inset 3px 2px 5px rgba(255,255,255,.85),
+        inset -4px -3px 6px rgba(146,52,131,.16),
+        0 2px 8px rgba(255,143,208,.12);
+}
+
+.sakura-3d .petal:nth-child(1) { transform: rotate(0deg) translateY(-13%); }
+.sakura-3d .petal:nth-child(2) { transform: rotate(72deg) translateY(-13%); }
+.sakura-3d .petal:nth-child(3) { transform: rotate(144deg) translateY(-13%); }
+.sakura-3d .petal:nth-child(4) { transform: rotate(216deg) translateY(-13%); }
+.sakura-3d .petal:nth-child(5) { transform: rotate(288deg) translateY(-13%); }
+
+.sakura-3d .center {
+    position: absolute;
+    width: 21%;
+    height: 21%;
+    left: 39.5%;
+    top: 39.5%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fffbd1, #ffcb75 48%, #d77cba 85%);
+    box-shadow: 0 0 15px rgba(255,222,160,.8);
+    transform: translateZ(12px);
+}
+
+@keyframes flowerFloat {
+    0%, 100% { transform: translateY(0) rotate(-10deg) rotateY(0deg); }
+    50% { transform: translateY(-22px) rotate(10deg) rotateY(35deg); }
+}
+
+/* Header and navigation */
+
+header {
+    position: relative;
+    z-index: 100;
+    padding: 18px 6%;
+}
+
+.navbar {
+    max-width: 1320px;
+    min-height: 70px;
+    margin: auto;
+    padding: 12px 20px 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: rgba(25,15,52,.68);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0,0,0,.12);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.logo-flower {
+    font-size: 29px;
+    filter: drop-shadow(0 0 9px rgba(255,145,200,.6));
+}
+
+.logo span:last-child {
+    background: linear-gradient(90deg, #fff, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    list-style: none;
+}
+
+.nav-links > li > a,
+.dropdown-toggle {
+    display: block;
+    color: #eee6ff;
+    background: transparent;
+    border: 0;
+    padding: 12px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: .3s;
+    white-space: nowrap;
+}
+
+.nav-links > li > a:hover,
+.dropdown-toggle:hover {
+    color: var(--cyan);
+    background: rgba(255,255,255,.08);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    padding: 8px;
+    background: rgba(31,18,62,.97);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    z-index: 300;
+}
+
+.dropdown.open .dropdown-menu,
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px;
+    font-size: 13px;
+    border-radius: 9px;
+    color: var(--muted);
+}
+
+.dropdown-menu a:hover {
+    color: white;
+    background: rgba(255,145,200,.14);
+}
+
+.nav-logout {
+    border: 1px solid rgba(255,145,200,.5) !important;
+    color: var(--pink-light) !important;
+}
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: white;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Main hero */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    max-width: 1320px;
+    min-height: 600px;
+    margin: 12px auto 0;
+    padding: 60px 7% 85px;
+    display: grid;
+    grid-template-columns: 1.12fr .88fr;
+    align-items: center;
+    gap: 35px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(131,240,244,.35);
+    color: var(--cyan);
+    background: rgba(131,240,244,.07);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+.hero h1 {
+    margin-top: 25px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6.2vw, 82px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+}
+
+.hero h1 .gradient-text {
+    display: block;
+    background: linear-gradient(95deg, #ffb3da, #cbbaff 50%, #8df4f3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 24px rgba(255,145,200,.13));
+}
+
+.hero-description {
+    max-width: 550px;
+    margin-top: 23px;
+    color: #d5cce8;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 32px;
+}
+
+.btn {
+    min-height: 49px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #241337;
+    background: linear-gradient(115deg, #ffc1e0, #b7c8ff 60%, #9af5f1);
+    box-shadow: 0 8px 30px rgba(209,145,226,.18);
+}
+
+.btn-secondary {
+    color: white;
+    background: rgba(255,255,255,.055);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255,145,200,.2);
+}
+
+.hero-note {
+    margin-top: 25px;
+    color: #a9a0c6;
+    font-size: 12px;
+    letter-spacing: .4px;
+}
+
+/* Hero artwork */
+
+.hero-art {
+    min-height: 420px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.orbit {
+    position: absolute;
+    width: min(100%, 410px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(255,185,221,.24);
+    border-radius: 50%;
+    transform: rotateX(65deg) rotateZ(-20deg);
+    box-shadow:
+        0 0 45px rgba(255,145,200,.06),
+        inset 0 0 35px rgba(131,240,244,.035);
+}
+
+.orbit.two {
+    width: min(83%, 335px);
+    border-color: rgba(131,240,244,.23);
+    transform: rotateX(65deg) rotateZ(45deg);
+}
+
+.orbit-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 12%;
+    left: 20%;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 20px var(--cyan);
+}
+
+.profile-frame {
+    position: relative;
+    z-index: 2;
+    width: min(76%, 310px);
+    aspect-ratio: 4 / 5;
+    padding: 9px;
+    border-radius: 160px 160px 40px 40px;
+    background: linear-gradient(145deg, #fff1fb, #ff94d1, #8feef3, #9e82f9);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.3),
+        0 0 45px rgba(255,145,200,.27),
+        0 25px 70px rgba(0,0,0,.4);
+    transform: rotateY(-7deg);
+    animation: portraitFloat 6s ease-in-out infinite;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 155px 155px 32px 32px;
+    background: linear-gradient(145deg, #382354, #1d3154);
+}
+
+@keyframes portraitFloat {
+    0%, 100% { transform: translateY(0) rotateY(-7deg); }
+    50% { transform: translateY(-12px) rotateY(5deg); }
+}
+
+.art-flower {
+    position: absolute;
+    z-index: 3;
+}
+
+.art-flower.a {
+    --flower-size: 92px;
+    --flower-left: 5%;
+    --flower-top: 16%;
+    --flower-speed: 7s;
+}
+
+.art-flower.b {
+    --flower-size: 64px;
+    --flower-left: 79%;
+    --flower-top: 68%;
+    --flower-speed: 6s;
+}
+
+.art-flower.c {
+    --flower-size: 43px;
+    --flower-left: 12%;
+    --flower-top: 76%;
+    --flower-speed: 9s;
+}
+
+.floating-badge {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    background: rgba(29,19,57,.85);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    animation: badgeFloat 5s ease-in-out infinite;
+}
+
+.floating-badge .badge-icon {
+    font-size: 23px;
+}
+
+.floating-badge strong {
+    display: block;
+    font-size: 12px;
+}
+
+.floating-badge small {
+    display: block;
+    color: #bdb2d5;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.badge-top {
+    top: 13%;
+    right: -1%;
+}
+
+.badge-bottom {
+    left: -2%;
+    bottom: 12%;
+    animation-delay: -2.5s;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+/* Mini profile stats */
+
+.stats {
+    position: relative;
+    z-index: 3;
+    max-width: 1050px;
+    margin: 0 auto 55px;
+    padding: 0 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.stat-card {
+    padding: 23px;
+    text-align: center;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,145,200,.55);
+}
+
+.stat-card .stat-icon {
+    font-size: 24px;
+}
+
+.stat-card h3 {
+    margin: 9px 0 5px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+}
+
+.stat-card p {
+    color: #bcb2d3;
+    font-size: 12px;
+}
+
+/* Section common styles */
+
+section.content-section {
+    position: relative;
+    max-width: 1250px;
+    margin: auto;
+    padding: 85px 6%;
+    scroll-margin-top: 100px;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 45px;
+}
+
+.section-kicker {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    margin-top: 13px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
+}
+
+.section-heading h2 span {
+    color: var(--pink);
+}
+
+.section-heading p {
+    margin-top: 15px;
+    color: #c5bbdc;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* Fun fact cards */
+
+.funfact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.funfact-card {
+    min-height: 255px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.funfact-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 255px;
+    transform-style: preserve-3d;
+    transition: transform .75s cubic-bezier(.2,.75,.25,1);
+}
+
+.funfact-card:hover .funfact-inner,
+.funfact-card:focus .funfact-inner,
+.funfact-card.flipped .funfact-inner {
+    transform: rotateY(180deg);
+}
+
+.funfact-front,
+.funfact-back {
+    position: absolute;
+    inset: 0;
+    padding: 25px 20px;
+    border: 1px solid var(--border);
+    border-radius: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.funfact-front {
+    background:
+        radial-gradient(circle at 85% 10%, rgba(255,145,200,.17), transparent 45%),
+        linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+    box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.funfact-front::before {
+    content: "✿";
+    position: absolute;
+    right: -8px;
+    top: -25px;
+    font-size: 100px;
+    color: rgba(255,255,255,.035);
+}
+
+.fact-icon {
+    width: 63px;
+    height: 63px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    background: linear-gradient(145deg, rgba(255,145,200,.2), rgba(131,240,244,.12));
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.funfact-front h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+}
+
+.flip-hint {
+    margin-top: 15px;
+    color: #a99ec4;
+    font-size: 10px;
+}
+
+.funfact-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #ffd8eb, #c7c5ff 58%, #a2f0ee);
+    color: #26143f;
+}
+
+.funfact-back h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.funfact-back p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* About me */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.about-visual {
+    position: relative;
+    min-height: 370px;
+    display: grid;
+    place-items: center;
+}
+
+.about-orb {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,145,200,.19), rgba(131,240,244,.13));
+    box-shadow: 0 0 75px rgba(190,125,255,.1);
+}
+
+.about-flower {
+    position: absolute;
+    --flower-size: 220px;
+    --flower-left: 50%;
+    --flower-top: 50%;
+    transform: translate(-50%, -50%);
+    animation: flowerFloat 9s ease-in-out infinite;
+}
+
+.about-visual-label {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 11px 18px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    background: rgba(25,15,52,.85);
+    color: var(--pink-light);
+    font-size: 12px;
+}
+
+.about-copy .section-kicker {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.about-copy h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(33px, 4vw, 48px);
+    line-height: 1.2;
+}
+
+.about-copy h2 span {
+    color: var(--pink);
+}
+
+.about-copy p {
+    margin-top: 18px;
+    color: #c9c0dc;
+    font-size: 14px;
+    line-height: 1.95;
+}
+
+.about-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.detail {
+    padding: 15px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.detail small {
+    display: block;
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.detail strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Image slider */
+
+.gallery-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 27px;
+    background: #24153f;
+    box-shadow: 0 25px 65px rgba(0,0,0,.25);
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    height: clamp(300px, 48vw, 520px);
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform .75s cubic-bezier(.2,.7,.3,1);
+}
+
+.slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    cursor: zoom-in;
+}
+
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(16,8,33,.9), transparent 65%);
+}
+
+.slide-caption {
+    position: absolute;
+    z-index: 2;
+    left: clamp(20px, 5%, 55px);
+    bottom: 35px;
+    right: 20px;
+}
+
+.slide-caption small {
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.slide-caption h3 {
+    margin-top: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(25px, 4vw, 42px);
+}
+
+.slide-caption p {
+    margin-top: 8px;
+    max-width: 500px;
+    color: #e1d8ef;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.slider-controls {
+    position: absolute;
+    z-index: 5;
+    right: 22px;
+    bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 50%;
+    color: white;
+    background: rgba(20,12,44,.65);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: .25s;
+}
+
+.slider-btn:hover {
+    background: var(--pink);
+    color: var(--navy);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 17px;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-radius: 20px;
+    background: #6b6087;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.slider-dot.active {
+    width: 26px;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+}
+
+/* Interests */
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.interest-card {
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    transition: .3s;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,.105);
+    border-color: rgba(131,240,244,.4);
+}
+
+.interest-card .interest-icon {
+    font-size: 29px;
+}
+
+.interest-card h3 {
+    margin-top: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+}
+
+.interest-card p {
+    margin-top: 10px;
+    color: #bfb5d6;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Quote */
+
+.quote-banner {
+    position: relative;
+    max-width: 1000px;
+    margin: 20px auto 90px;
+    padding: 45px 8%;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(255,145,200,.25);
+    border-radius: 28px;
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(255,145,200,.12), transparent 50%),
+        linear-gradient(135deg, rgba(255,255,255,.07), rgba(131,240,244,.04));
+}
+
+.quote-mark {
+    color: var(--pink);
+    font-family: 'Playfair Display', serif;
+    font-size: 70px;
+    line-height: .8;
+}
+
+.quote-banner blockquote {
+    margin-top: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(23px, 3.5vw, 35px);
+    line-height: 1.5;
+}
+
+.quote-banner p {
+    margin-top: 17px;
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+
+footer {
+    padding: 35px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: rgba(9,7,25,.35);
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+footer p {
+    margin-top: 12px;
+    color: #b5abc9;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.footer-links {
+    margin: 17px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #d9d0e9;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+/* Back to top */
+
+.back-top {
+    position: fixed;
+    z-index: 90;
+    right: 22px;
+    bottom: 22px;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    color: white;
+    background: rgba(38,22,66,.9);
+    box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: .3s;
+}
+
+.back-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Lightbox */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    padding: 35px 15px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(7,4,19,.95);
+    backdrop-filter: blur(12px);
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    display: block;
+    max-width: 92vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(255,145,200,.13);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: white;
+    background: rgba(255,255,255,.08);
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* Responsive layouts */
+
+@media (max-width: 1050px) {
+    .navbar { padding-left: 17px; }
+    .logo { font-size: 20px; }
+    .nav-links > li > a, .dropdown-toggle { padding: 11px 8px; font-size: 11px; }
+    .hero { padding-left: 5%; padding-right: 5%; }
+    .funfact-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-art { min-height: 380px; }
+}
+
+@media (max-width: 760px) {
+    header { padding: 12px 4%; }
+    .navbar { min-height: 62px; border-radius: 17px; }
+    .menu-toggle { display: block; flex-shrink: 0; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 3px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(24,14,49,.98);
+        box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    }
+
+    .nav-links.open { display: flex; }
+    .nav-links > li > a, .dropdown-toggle { width: 100%; text-align: left; padding: 13px; font-size: 13px; }
+    .dropdown-menu { position: static; margin: 4px 0; box-shadow: none; }
+    .dropdown.open .dropdown-menu { display: block; }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 55px 7% 30px;
+        gap: 12px;
+    }
+
+    .hero-content { order: 1; }
+    .hero-description { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-note { line-height: 1.8; }
+    .hero-art { order: 2; min-height: 400px; margin-top: 5px; }
+    .hero h1 { font-size: clamp(46px, 10vw, 69px); }
+    .badge-top { right: 0; }
+    .badge-bottom { left: 0; }
+    .stats { margin-bottom: 20px; }
+    section.content-section { padding: 65px 6%; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .about-visual { min-height: 330px; }
+    .about-copy { text-align: center; }
+    .about-details { text-align: left; }
+    .interest-grid { grid-template-columns: 1fr 1fr; }
+    .quote-banner { margin: 10px 6% 60px; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 19px; }
+    .logo-flower { font-size: 25px; }
+    .hero { padding-top: 43px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero-description { font-size: 14px; }
+    .hero-buttons { flex-direction: column; align-items: stretch; }
+    .hero-art { min-height: 340px; }
+    .profile-frame { width: 67%; }
+    .badge-top { right: -3%; top: 12%; }
+    .badge-bottom { left: -3%; bottom: 10%; }
+    .floating-badge { padding: 10px; gap: 7px; }
+    .floating-badge .badge-icon { font-size: 19px; }
+    .floating-badge strong { font-size: 10px; }
+    .floating-badge small { font-size: 9px; }
+    .stats { grid-template-columns: 1fr; gap: 10px; padding: 0 7%; }
+    .stat-card { display: flex; align-items: center; text-align: left; gap: 13px; padding: 16px; }
+    .stat-card .stat-icon { font-size: 25px; }
+    .stat-card h3 { font-size: 16px; margin: 0; }
+    .stat-card p { margin-top: 4px; }
+    .funfact-grid { grid-template-columns: 1fr; }
+    .funfact-card, .funfact-inner { min-height: 220px; }
+    .interest-grid { grid-template-columns: 1fr; }
+    .about-details { grid-template-columns: 1fr; }
+    .slider { height: 360px; }
+    .slide-caption { bottom: 65px; }
+    .slider-controls { bottom: 15px; }
+    .slider-dots { padding: 14px; }
+    .section-heading { margin-bottom: 30px; }
+}
+
+/* Accessibility: respect reduced motion settings */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+    #petalLayer { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+<div id="petalLayer" aria-hidden="true"></div>
+
+<!-- Decorative 3D flowers -->
+<div class="sakura-3d" style="--flower-size:85px;--flower-left:2%;--flower-top:23%;--flower-speed:9s;--flower-opacity:.5" aria-hidden="true">
+    <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+</div>
+
+<div class="sakura-3d" style="--flower-size:55px;--flower-left:88%;--flower-top:31%;--flower-speed:7s;--flower-opacity:.55" aria-hidden="true">
+    <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+</div>
+
+<div class="sakura-3d" style="--flower-size:65px;--flower-left:91%;--flower-top:76%;--flower-speed:11s;--flower-opacity:.45" aria-hidden="true">
+    <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+</div>
+
+<!-- NAVIGATION -->
+<header id="home">
+    <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="#home" aria-label="Melojay home">
+            <span class="logo-flower">🌸</span>
+            <span>Melojay's World</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">HOME</a></li>
+
+            <li class="dropdown" id="aboutDropdown">
+                <button class="dropdown-toggle" id="aboutToggle"
+                        aria-expanded="false"
+                        aria-controls="aboutMenu">
+                    ABOUT ME ▾
+                </button>
+                <div class="dropdown-menu" id="aboutMenu">
+                    <a href="#about">My Profile</a>
+                    <a href="#facts">Fun Facts</a>
+                    <a href="#interests">My Interests</a>
+                </div>
+            </li>
+
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#interests">MY WORLD</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a class="nav-logout" href="login.html" id="logoutBtn">LOG OUT ↗</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-content">
+        <div class="eyebrow">
+            <span class="status-dot"></span>
+            Welcome to my little universe
+        </div>
+
+        <h1 id="heroTitle">
+            Hello, I'm
+            <span class="gradient-text">Melojay.</span>
+            <span style="font-size:.56em;letter-spacing:0">♡</span>
+        </h1>
+
+        <p class="hero-description">
+            An IT student with a curious mind, creative dreams, and a love
+            for discovering new things. This is my personal space where
+            technology meets creativity, and every little dream gets room
+            to bloom — just like sakura in spring.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="btn btn-primary" href="#about">
+                Discover My Story <span>♡</span>
+            </a>
+            <a class="btn btn-secondary" href="#gallery">
+                ✧ Explore My Gallery
+            </a>
+        </div>
+
+        <p class="hero-note">
+            ✦ BSIT 2A &nbsp;·&nbsp; Dreaming, learning, and growing every day
+        </p>
+    </div>
+
+    <div class="hero-art" aria-label="Melojay's profile artwork">
+        <div class="orbit"><span class="orbit-dot"></span></div>
+        <div class="orbit two"></div>
+
+        <div class="sakura-3d art-flower a" aria-hidden="true">
+            <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+        </div>
+
+        <div class="sakura-3d art-flower b" aria-hidden="true">
+            <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+        </div>
+
+        <div class="sakura-3d art-flower c" aria-hidden="true">
+            <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+        </div>
+
+        <div class="profile-frame">
+            <!-- Replace with your actual profile photo -->
+            <img src="melojay.jpg"
+                 alt="Melojay's portrait"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+
+            <div class="photo-placeholder" style="display:none;width:100%;height:100%;place-items:center;text-align:center;padding:20px;background:linear-gradient(145deg,#39204e,#243d5e);border-radius:inherit;">
+                <div>
+                    <div style="font-size:60px;">🌸</div>
+                    <p style="font-family:'Playfair Display',serif;font-size:24px;margin-top:15px;">Melojay</p>
+                    <small style="display:block;margin-top:8px;color:#cfc5e4;">Your photo goes here</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-badge badge-top">
+            <span class="badge-icon">💻</span>
+            <span><strong>Future IT Professional</strong><small>Learning by creating</small></span>
+        </div>
+
+        <div class="floating-badge badge-bottom">
+            <span class="badge-icon">🌸</span>
+            <span><strong>Growing at my own pace</strong><small>One dream at a time</small></span>
+        </div>
+    </div>
+</section>
+
+<!-- QUICK FACTS -->
+<div class="stats" aria-label="Quick profile information">
+    <article class="stat-card">
+        <span class="stat-icon">🎓</span>
+        <div>
+            <h3>BSIT 2A</h3>
+            <p>My academic journey</p>
+        </div>
+    </article>
+
+    <article class="stat-card">
+        <span class="stat-icon">💻</span>
+        <div>
+            <h3>Information Technology</h3>
+            <p>My field of study</p>
+        </div>
+    </article>
+
+    <article class="stat-card">
+        <span class="stat-icon">🌷</span>
+        <div>
+            <h3>Learn & Create</h3>
+            <p>My everyday inspiration</p>
+        </div>
+    </article>
+</div>
+
+<!-- ABOUT -->
+<section class="content-section" id="about">
+    <div class="about-grid">
+        <div class="about-visual">
+            <div class="about-orb"></div>
+
+            <div class="sakura-3d about-flower" aria-hidden="true">
+                <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i>
+            </div>
+
+            <div class="about-visual-label">♡ A little piece of my world ♡</div>
+        </div>
+
+        <div class="about-copy">
+            <span class="section-kicker">Get to know me</span>
+            <h2>A little about <span>Melojay</span> 🌸</h2>
+
+            <p>
+                Hi! I'm Melojay A. Lomugdang, an Information Technology
+                student at the University of Antique, Tario-Lim Memorial
+                Campus. I'm currently part of BSIT 2A, exploring how
+                technology can turn ideas into something useful and creative.
+            </p>
+
+            <p>
+                I'm interested in learning more about web design, coding,
+                digital creativity, and the many possibilities that come
+                with technology. Every project is a chance to learn something
+                new, improve my skills, and become more confident in what I do.
+            </p>
+
+            <p>
+                Outside the world of code, this website reflects my love for
+                dreamy colors, sakura flowers, and designs that feel personal.
+                My journey is still unfolding, and I'm excited to see where
+                curiosity and hard work will take me.
+            </p>
+
+            <div class="about-details">
+                <div class="detail">
+                    <small>My name</small>
+                    <strong>Melojay A. Lomugdang</strong>
+                </div>
+                <div class="detail">
+                    <small>My program</small>
+                    <strong>Bachelor of Science in IT</strong>
+                </div>
+                <div class="detail">
+                    <small>Year & section</small>
+                    <strong>2nd Year · BSIT 2A</strong>
+                </div>
+                <div class="detail">
+                    <small>My school</small>
+                    <strong>University of Antique · Tario-Lim Memorial Campus</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FUN FACTS -->
+<section class="content-section" id="facts">
+    <div class="section-heading">
+        <span class="section-kicker">Little things, big personality</span>
+        <h2>Fun Facts About <span>Me</span></h2>
+        <p>
+            Every person has a story made up of little details.
+            Here are a few things that represent my interests and the
+            kind of world I love. Tap a card to discover more.
+        </p>
+    </div>
+
+    <div class="funfact-grid">
+        <article class="funfact-card" tabindex="0" role="button" aria-pressed="false" aria-label="Reveal programming fun fact">
+            <div class="funfact-inner">
+                <div class="funfact-front">
+                    <div class="fact-icon">💻</div>
+                    <h3>Code & Create</h3>
+                    <span class="flip-hint">TAP TO FLIP ✧</span>
+                </div>
+                <div class="funfact-back">
+                    <h3>My IT Journey</h3>
+                    <p>I'm exploring programming and web design, learning how lines of code can become something people can actually use.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="funfact-card" tabindex="0" role="button" aria-pressed="false" aria-label="Reveal coffee fun fact">
+            <div class="funfact-inner">
+                <div class="funfact-front">
+                    <div class="fact-icon">☕</div>
+                    <h3>Coffee Moments</h3>
+                    <span class="flip-hint">TAP TO FLIP ✧</span>
+                </div>
+                <div class="funfact-back">
+                    <h3>A Cozy Break</h3>
+                    <p>A cozy coffee moment can make a study session feel a little more special. It's all about finding small joys in a busy day.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="funfact-card" tabindex="0" role="button" aria-pressed="false" aria-label="Reveal creativity fun fact">
+            <div class="funfact-inner">
+                <div class="funfact-front">
+                    <div class="fact-icon">🎨</div>
+                    <h3>Creative Soul</h3>
+                    <span class="flip-hint">TAP TO FLIP ✧</span>
+                </div>
+                <div class="funfact-back">
+                    <h3>Design Lover</h3>
+                    <p>I enjoy exploring colors, layouts, and visual details that help a website express its own personality.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="funfact-card" tabindex="0" role="button" aria-pressed="false" aria-label="Reveal dreams fun fact">
+            <div class="funfact-inner">
+                <div class="funfact-front">
+                    <div class="fact-icon">🌷</div>
+                    <h3>Dream in Bloom</h3>
+                    <span class="flip-hint">TAP TO FLIP ✧</span>
+                </div>
+                <div class="funfact-back">
+                    <h3>Keep Growing</h3>
+                    <p>I believe progress happens one step at a time. Each lesson, challenge, and new experience can help me grow.</p>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="content-section" id="interests">
+    <div class="section-heading">
+        <span class="section-kicker">Things that inspire me</span>
+        <h2>My Little <span>Universe</span></h2>
+        <p>
+            The interests I'm exploring as I continue to learn, create,
+            and discover more about myself.
+        </p>
+    </div>
+
+    <div class="interest-grid">
+        <article class="interest-card">
+            <span class="interest-icon">🌐</span>
+            <h3>Web Development</h3>
+            <p>Exploring HTML, CSS, JavaScript, and the art of making attractive, responsive websites.</p>
+        </article>
+
+        <article class="interest-card">
+            <span class="interest-icon">🪄</span>
+            <h3>Digital Creativity</h3>
+            <p>Experimenting with layouts, colors, typography, and visual ideas to create a unique digital experience.</p>
+        </article>
+
+        <article class="interest-card">
+            <span class="interest-icon">📚</span>
+            <h3>Learning New Skills</h3>
+            <p>Building my knowledge through school activities, practice, experimentation, and new challenges.</p>
+        </article>
+
+        <article class="interest-card">
+            <span class="interest-icon">🎧</span>
+            <h3>Music & Chill</h3>
+            <p>Making space for relaxing moments and the music that brings a little comfort to everyday life.</p>
+        </article>
+
+        <article class="interest-card">
+            <span class="interest-icon">🌸</span>
+            <h3>Sakura Aesthetics</h3>
+            <p>Inspired by cherry blossoms, dreamy colors, delicate details, and beautiful seasonal themes.</p>
+        </article>
+
+        <article class="interest-card">
+            <span class="interest-icon">✨</span>
+            <h3>Personal Growth</h3>
+            <p>Working toward my goals, embracing new experiences, and becoming more confident in my abilities.</p>
+        </article>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="content-section" id="gallery">
+    <div class="section-heading">
+        <span class="section-kicker">Memories & moments</span>
+        <h2>My Personal <span>Gallery</span></h2>
+        <p>
+            A little collection of photos that brings my personal website
+            to life. Replace the sample images with your favorite pictures.
+        </p>
+    </div>
+
+    <div class="gallery-wrap">
+        <div class="slider" id="slider">
+            <div class="slides" id="slides">
+
+                <article class="slide">
+                    <img src="GANDA.jpg" alt="Melojay's featured photo" loading="lazy">
+                    <div class="slide-caption">
+                        <small>01 · A MOMENT TO REMEMBER</small>
+                        <h3>Little Moments, Big Memories</h3>
+                        <p>Every picture has a story, and every story is part of my journey.</p>
+                    </div>
+                </article>
+
+                <article class="slide">
+                    <img src="2.png" alt="A moment from Melojay's personal collection" loading="lazy">
+                    <div class="slide-caption">
+                        <small>02 · MY WORLD</small>
+                        <h3>Pieces of My Journey</h3>
+                        <p>Collecting experiences, learning along the way, and making memories.</p>
+                    </div>
+                </article>
+
+                <article class="slide">
+                    <img src="3.png" alt="A favorite creative or technology image" loading="lazy">
+                    <div class="slide-caption">
+                        <small>03 · DREAMS IN BLOOM</small>
+                        <h3>Learn. Create. Bloom.</h3>
+                        <p>A reminder to keep growing, stay curious, and enjoy the journey.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevSlide" aria-label="Previous image">←</button>
+                <button class="slider-btn" id="nextSlide" aria-label="Next image">→</button>
+            </div>
+        </div>
+        <div class="slider-dots" id="sliderDots" aria-label="Choose a gallery slide"></div>
+    </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-banner">
+    <div class="quote-mark">“</div>
+    <blockquote>
+        Like sakura flowers, we all bloom in our own time.
+        Keep learning, keep dreaming, and trust your journey.
+    </blockquote>
+    <p>✿ A LITTLE REMINDER FROM ME TO YOU ✿</p>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-logo">Melojay's World 🌸</div>
+    <p>A little corner of the internet filled with my story, interests, and IT journey.</p>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#facts">Fun Facts</a>
+        <a href="#interests">Interests</a>
+        <a href="#gallery">Gallery</a>
+    </div>
+
+    <p>
+        Made with ♡ and a little sakura magic.<br>
+        &copy; <span id="year"></span> Melojay A. Lomugdang · All rights reserved.
+    </p>
+</footer>
+
+<a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+
+<!-- Image lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded gallery image">
+    <button class="lightbox-close" id="closeLightbox" aria-label="Close image">×</button>
+    <img src="" alt="Expanded gallery photo" id="lightboxImage">
+</div>
+
+<script>
+/* Current year */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Falling sakura petals */
+const petalLayer = document.getElementById("petalLayer");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!reducedMotion) {
+    const petalCount = window.innerWidth < 600 ? 13 : 25;
+
+    for (let i = 0; i < petalCount; i++) {
+        const petal = document.createElement("span");
+        petal.className = "falling-petal";
+        petal.style.setProperty("--left", Math.random() * 100 + "%");
+        petal.style.setProperty("--size", (8 + Math.random() * 12) + "px");
+        petal.style.setProperty("--duration", (9 + Math.random() * 13) + "s");
+        petal.style.setProperty("--delay", (-Math.random() * 20) + "s");
+        petal.style.setProperty("--opacity", (0.3 + Math.random() * 0.55).toFixed(2));
+        petalLayer.appendChild(petal);
+    }
+}
+
+/* Mobile navigation */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const aboutDropdown = document.getElementById("aboutDropdown");
+const aboutToggle = document.getElementById("aboutToggle");
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+aboutToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = aboutDropdown.classList.toggle("open");
+    aboutToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        aboutDropdown.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+        aboutToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
+document.addEventListener("click", (event) => {
+    if (!aboutDropdown.contains(event.target)) {
+        aboutDropdown.classList.remove("open");
+        aboutToggle.setAttribute("aria-expanded", "false");
+    }
+});
+
+/* Interactive flip cards: mouse, touch, and keyboard */
+document.querySelectorAll(".funfact-card").forEach(card => {
+    function toggleCard() {
+        const flipped = card.classList.toggle("flipped");
+        card.setAttribute("aria-pressed", String(flipped));
+    }
+
+    card.addEventListener("click", toggleCard);
+
+    card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleCard();
+        }
+    });
+});
+
+/* Gallery slider */
+const slidesTrack = document.getElementById("slides");
+const slideElements = Array.from(document.querySelectorAll(".slide"));
+const dotsContainer = document.getElementById("sliderDots");
+const slider = document.getElementById("slider");
+let currentSlide = 0;
+let sliderTimer;
+
+slideElements.forEach((slide, i) => {
+    const dot = document.createElement("button");
+    dot.className = "slider-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", "Show gallery image " + (i + 1));
+    dot.addEventListener("click", () => {
+        showSlide(i);
+        restartSlider();
+    });
+    dotsContainer.appendChild(dot);
+});
+
+function showSlide(index) {
+    currentSlide = (index + slideElements.length) % slideElements.length;
+    slidesTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    Array.from(dotsContainer.children).forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+        dot.setAttribute("aria-current", i === currentSlide ? "true" : "false");
+    });
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function previousSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function startSlider() {
+    if (reducedMotion) return;
+    clearInterval(sliderTimer);
+    sliderTimer = setInterval(nextSlide, 4500);
+}
+
+function restartSlider() {
+    startSlider();
+}
+
+document.getElementById("nextSlide").addEventListener("click", () => {
+    nextSlide();
+    restartSlider();
+});
+
+document.getElementById("prevSlide").addEventListener("click", () => {
+    previousSlide();
+    restartSlider();
+});
+
+slider.addEventListener("mouseenter", () => clearInterval(sliderTimer));
+slider.addEventListener("mouseleave", startSlider);
+slider.addEventListener("focusin", () => clearInterval(sliderTimer));
+slider.addEventListener("focusout", startSlider);
+
+startSlider();
+
+/* Gallery lightbox */
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightboxButton = document.getElementById("closeLightbox");
+let lastFocusedElement = null;
+
+document.querySelectorAll(".slide img").forEach(img => {
+    img.addEventListener("click", () => {
+        lastFocusedElement = img;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add("open");
+        closeLightboxButton.focus();
+    });
+});
+
+function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightboxImage.src = "";
+    if (lastFocusedElement) lastFocusedElement.focus();
+}
+
+closeLightboxButton.addEventListener("click", closeLightbox);
+
+lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+    }
+});
+
+/* Back-to-top button */
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+    backTop.classList.toggle("visible", window.scrollY > 450);
+}, { passive: true });
+
+/* Logout confirmation */
+document.getElementById("logoutBtn").addEventListener("click", event => {
+    event.preventDefault();
+
+    if (confirm("Are you sure you want to log out?")) {
+        try {
+            localStorage.removeItem("isLoggedIn");
+        } catch (error) {
+            console.warn("Login storage could not be accessed.");
+        }
+
+        window.location.href = "login.html";
+    }
+});
+</script>
+
+</body>
+</html>
